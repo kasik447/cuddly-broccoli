@@ -9,4 +9,3 @@ s = s[:s.find('h') + 1] + reversed_c + s[s.rfind('h') + 1:]
 print()
 print(s)
 
-

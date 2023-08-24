@@ -1,5 +1,8 @@
-print('hello git')
-print('hello')
+# print('hello git')
+# print('hello')
+#
+#
+# print("Hello GitHub!!!")
 
 
-print("Hello GitHub!!!")
+print('Строка, созданная в новом репозитории')

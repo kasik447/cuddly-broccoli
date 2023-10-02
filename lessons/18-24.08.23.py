@@ -164,7 +164,7 @@ import time
 
 # Homework
 
-dir_name = 'nested1'
+dir_name = '../nested1'
 
 objs = os.listdir(dir_name)
 print(objs)

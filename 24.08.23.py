@@ -121,7 +121,7 @@ import os.path
 import time
 
 
-# path = '27.06.23.py'
+# path = '5-27.06.23.py'
 # size = os.path.getsize(path)
 # # print(os.path.getsize(path), 'bytes')
 # print(size // 1024, 'KB')

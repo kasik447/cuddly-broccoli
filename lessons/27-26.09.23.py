@@ -131,26 +131,26 @@
 # print(func3(b='World', a='Hello '))
 
 
-class Decor:
-    def __init__(self, string):
-        self.string = string
-
-    def __call__(self, func):
-        def wrap(x, y):
-            print('*' * 20)
-            print(self.string, end=' ')
-            func(x, y)
-            print('=' * 20)
-
-        return wrap
-
-
-@Decor('Значения:')
-def add(a, b):
-    print(a, b)
-
-
-add(2, 5)
+# class Decor:
+#     def __init__(self, string):
+#         self.string = string
+#
+#     def __call__(self, func):
+#         def wrap(x, y):
+#             print('*' * 20)
+#             print(self.string, end=' ')
+#             func(x, y)
+#             print('=' * 20)
+#
+#         return wrap
+#
+#
+# @Decor('Значения:')
+# def add(a, b):
+#     print(a, b)
+#
+#
+# add(2, 5)
 
 
 # Декорирование методов
@@ -374,4 +374,23 @@ add(2, 5)
 # lst.append(2)
 # lst[0] = 3
 # print(lst, lst.get_length())
+
+
+# n = int(input('Количество человек в команде: '))
+# players = {}
+#
+#
+# for i in range(n):
+#     name = input('Имя: ')
+#     size = input('Размер: ')
+#     players[name] = size
+#
+# name = input('Введите имя человека: ')
+#
+# if name in players:
+#     print(players[name])
+# else:
+#     print('Такого человека в команде нет')
+#
+# print(players)
 

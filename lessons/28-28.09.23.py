@@ -32,62 +32,62 @@ from geometry import *
 # car.description_battery()
 
 
-class Employee:
-    def __init__(self, id, name):
-        self.id = id
-        self.name = name
-
-
-class SalaryEmployee(Employee):
-    """Административные работники имеют фиксированную зарплату"""
-
-    def __init__(self, id, name, weekly_salary):
-        super().__init__(id, name)
-        self.weekly_salary = weekly_salary
-
-    def calculate(self):
-        return self.weekly_salary
-
-
-class HourlyEmployee(Employee):
-    """Сотрудники с почасовой оплатой"""
-
-    def __init__(self, id, name, hours_worked, hour_rate):
-        super().__init__(id, name)
-        self.hours_worked = hours_worked
-        self.hour_rate = hour_rate
-
-    def calculate(self):
-        return self.hours_worked * self.hour_rate
-
-
-class CommissionEmployee(SalaryEmployee):
-    """Торговые представители, фиксированная зарплата + комиссия"""
-
-    def __init__(self, id, name, weekly_salary, commission):
-        super().__init__(id, name, weekly_salary)
-        self.commission = commission
-
-    def calculate(self):
-        fixed = super().calculate()
-        return fixed + self.commission
-
-
-class PayrollSystem:
-    def calc(self, employees):
-        print('Расчёт заработной платы')
-        print('=' * 50)
-        for employee in employees:
-            print(f'Заработная плата: {employee.id} - {employee.name}')
-            print(f'- Проверить сумму: {employee.calculate()}')
-            print()
-
-
-salary = SalaryEmployee(1, 'Валерий Задорожный', 1500)
-hourly = HourlyEmployee(2, 'Илья Кромин', 40, 15)
-commission = CommissionEmployee(3, 'Николай Хорольский', 1000, 250)
-system = PayrollSystem()
-system.calc([salary, hourly, commission])
+# class Employee:
+#     def __init__(self, id, name):
+#         self.id = id
+#         self.name = name
+#
+#
+# class SalaryEmployee(Employee):
+#     """Административные работники имеют фиксированную зарплату"""
+#
+#     def __init__(self, id, name, weekly_salary):
+#         super().__init__(id, name)
+#         self.weekly_salary = weekly_salary
+#
+#     def calculate(self):
+#         return self.weekly_salary
+#
+#
+# class HourlyEmployee(Employee):
+#     """Сотрудники с почасовой оплатой"""
+#
+#     def __init__(self, id, name, hours_worked, hour_rate):
+#         super().__init__(id, name)
+#         self.hours_worked = hours_worked
+#         self.hour_rate = hour_rate
+#
+#     def calculate(self):
+#         return self.hours_worked * self.hour_rate
+#
+#
+# class CommissionEmployee(SalaryEmployee):
+#     """Торговые представители, фиксированная зарплата + комиссия"""
+#
+#     def __init__(self, id, name, weekly_salary, commission):
+#         super().__init__(id, name, weekly_salary)
+#         self.commission = commission
+#
+#     def calculate(self):
+#         fixed = super().calculate()
+#         return fixed + self.commission
+#
+#
+# class PayrollSystem:
+#     def calc(self, employees):
+#         print('Расчёт заработной платы')
+#         print('=' * 50)
+#         for employee in employees:
+#             print(f'Заработная плата: {employee.id} - {employee.name}')
+#             print(f'- Проверить сумму: {employee.calculate()}')
+#             print()
+#
+#
+# salary = SalaryEmployee(1, 'Валерий Задорожный', 1500)
+# hourly = HourlyEmployee(2, 'Илья Кромин', 40, 15)
+# commission = CommissionEmployee(3, 'Николай Хорольский', 1000, 250)
+# system = PayrollSystem()
+# system.calc([salary, hourly, commission])
 
 
 # Упаковка данных (Сериализация и десериализация данных)

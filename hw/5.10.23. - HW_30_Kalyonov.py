@@ -4,14 +4,26 @@ data = {}
 
 
 class CountryCapital:
+
     @staticmethod
-    def add_country(file_name):
-        new_country = input('Введите название страны: ')
-        new_capital = input('Введите название столицы: ')
+    def load(file_name):
         try:
             data1 = json.load(open(file_name))
         except FileNotFoundError:
             data1 = {}
+        finally:
+            return data1
+
+    @staticmethod
+    def add_country(file_name):
+        new_country = input('Введите название страны: ')
+        new_capital = input('Введите название столицы: ')
+        # try:
+        #     data1 = json.load(open(file_name))
+        # except FileNotFoundError:
+        #     data1 = {}
+        data1 = CountryCapital.load(file_name)
+
         data1[new_country] = new_capital
 
         with open(file_name, 'w') as f:
@@ -26,10 +38,12 @@ class CountryCapital:
     def delete_country(file_name):
         del_country = input('Введите название страны: ')
 
-        try:
-            data1 = json.load(open(file_name))
-        except FileNotFoundError:
-            data1 = {}
+        # try:
+        #     data1 = json.load(open(file_name))
+        # except FileNotFoundError:
+        #     data1 = {}
+
+        data1 = CountryCapital.load(file_name)
 
         if del_country in data1:
             del data1[del_country]
@@ -41,10 +55,12 @@ class CountryCapital:
 
     @staticmethod
     def search_data(file_name):
-        try:
-            data1 = json.load(open(file_name))
-        except FileNotFoundError:
-            data1 = {}
+        # try:
+        #     data1 = json.load(open(file_name))
+        # except FileNotFoundError:
+        #     data1 = {}
+
+        data1 = CountryCapital.load(file_name)
 
         country = input('Введите название страны: ')
         if country in data1:
@@ -54,13 +70,14 @@ class CountryCapital:
 
     @staticmethod
     def edit_data(file_name):
-        try:
-            data1 = json.load(open(file_name))
-        except FileNotFoundError:
-            data1 = {}
-
         country = input('Введите страну для корректировки: ')
         new_capital = input('Введите новое название столицы: ')
+
+        # try:
+        #     data1 = json.load(open(file_name))
+        # except FileNotFoundError:
+        #     data1 = {}
+        data1 = CountryCapital.load(file_name)
 
         if country in data1:
             data1[country] = new_capital

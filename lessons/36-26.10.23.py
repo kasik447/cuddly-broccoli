@@ -1,4 +1,4 @@
-import sqlite3
+# import sqlite3
 
 # with sqlite3.connect("users.db") as con:
 #     cur = con.cursor()
@@ -27,27 +27,69 @@ import sqlite3
     # ''')
 
 
-with sqlite3.connect("db_3.db") as con:
+# with sqlite3.connect("db_3.db") as con:
+#     cur = con.cursor()
+#     cur.execute('''
+#         SELECT *
+#         FROM T1
+#         ORDER BY FName
+#         LIMIT 2, 5
+#     ''')
+#
+#     # res = cur.fetchall()  # => [(), ()]
+#     # print(res)
+#
+#     # for res in cur:
+#     #     print(res)
+#
+#     res = cur.fetchone()  # => ()
+#     print(res)
+#     res2 = cur.fetchmany(2)  # => [(), ()]
+#     print(res2)
+#     res3 = cur.fetchall()  # => [(), ()]
+#     print(res3)
+
+
+import sqlite3
+
+cars = [
+    ('BMW', 54000),
+    ('Chevrolet', 46000),
+    ('Daewoo', 38000),
+    ('Citroen', 29000),
+    ('Honda', 33000)
+]
+
+
+with sqlite3.connect('car.db') as con:
     cur = con.cursor()
     cur.execute('''
-        SELECT *
-        FROM T1 
-        ORDER BY FName
-        LIMIT 2, 5
+    CREATE TABLE IF NOT EXISTS cars(
+        car_id INTEGER PRIMARY KEY AUTOINCREMENT,
+        model TEXT,
+        price INTEGER
+    )''')
+
+    cur.executescript('''
+    DELETE FROM cars WHERE model LIKE "B%"; 
+    UPDATE cars SET price = price + 100;
     ''')
 
-    # res = cur.fetchall()  # => [(), ()]
-    # print(res)
+    # cur.execute("UPDATE cars SET price = :Price WHERE model LIKE 'B%'", {'Price': 0})
 
-    # for res in cur:
-    #     print(res)
+    # cur.executemany('INSERT INTO cars VALUES(NULL, ?, ?)', cars)
 
-    res = cur.fetchone()  # => ()
-    print(res)
-    res2 = cur.fetchmany(2)  # => [(), ()]
-    print(res2)
-    res3 = cur.fetchall()  # => [(), ()]
-    print(res3)
+    # for car in cars:
+    #     cur.execute('INSERT INTO cars VALUES(NULL, ?, ?)', car)
+
+    # cur.execute('INSERT INTO cars VALUES(1, "Renault", 22000)')
+    # cur.execute('INSERT INTO cars VALUES(2, "Volvo", 29000)')
+    # cur.execute('INSERT INTO cars VALUES(3, "Mercedes", 57000)')
+    # cur.execute('INSERT INTO cars VALUES(4, "Bentley", 35000)')
+    # cur.execute('INSERT INTO cars VALUES(5, "Audi", 52000)')
+
+# con.commit()
+# con.close()
 
 
 

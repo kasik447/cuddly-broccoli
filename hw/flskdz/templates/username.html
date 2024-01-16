@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{{ super() }}
+<h2>Авторизация</h2>
+
+<p>Для входа в систему введите ваш логин и пароль: </p>
+
+<form action="/contact" method="post">
+    <p>Логин: <input type="text" name="login" required></p>
+    <p>Пароль: <input type="password" name="password" required></p>
+    <p><input type="submit" value="Войти"></p>
+    <p><input type="submit" value="Зарегистрироваться"></p>
+</form>
+
+{% endblock %}

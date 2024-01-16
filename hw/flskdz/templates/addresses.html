@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{{ super() }}
+
+<form action="/contact" method="post">
+    <h2>Введите интересующий вас город:</h2>
+    <p>Город: <input type="text" name="city" required></p>
+    <p><input type="submit" value="Ответить"></p>
+</form>
+
+<h2>Адреса всех магазинов в вашем городе:</h2>
+<p>1. Адрес магазина </p>
+<p>2. Адрес магазина </p>
+<p>3. Адрес магазина </p>
+
+{% endblock %}

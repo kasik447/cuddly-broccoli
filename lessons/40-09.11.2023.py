@@ -168,7 +168,7 @@ print(msg)
 # file_loader = FileSystemLoader('shablon')
 # env = Environment(loader=file_loader)
 #
-# tm = env.get_template('about.html')
+# tm = env.get_template('addresses.html')
 # msg = tm.render(list_table=subs)
 #
 # print(msg)

@@ -1,0 +1,21 @@
+body{
+    background: lightyellow;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.container{
+    width: 450px;
+    margin: 0 auto;
+}
+h1{
+    text-align: center;
+}
+.container form, .container h2, .container h3{
+    background: greenyellow;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 8px;
+}
+
+i{
+    color: red;
+}

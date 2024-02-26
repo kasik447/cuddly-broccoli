@@ -26,6 +26,7 @@ body{
 }
 
 .element, .count{
+    box-shadow: 0 2px 6px 2px brown;
     background: #FFF;
     border: 6px solid brown;
     margin: 20px 0;
@@ -53,6 +54,7 @@ body{
 }
 .img img{
     border: 6px solid brown;
+    box-shadow: 0 2px 6px 2px brown;
 }
 
 a{

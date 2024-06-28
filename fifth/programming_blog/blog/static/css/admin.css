@@ -1,0 +1,6 @@
+#nav-sidebar, #header{
+    background: #446600 !important;
+}
+a:link, a:visited{
+    color: #009f1d;
+}

@@ -12,7 +12,9 @@
         {% if user.is_authenticated %}
             <ul>
                 <li class="logo">Пользователь: {{ user.username }}</li>
+                <li><a href="{% url 'createtodos' %}">Создать</a></li>
                 <li><a href="{% url 'currenttodos' %}">Актуальные</a></li>
+                <li><a href="{% url 'completed' %}">Выполненные</a></li>
                 <li>
                     <form action="{% url 'logoutuser' %}" method="post">
                     {% csrf_token %}

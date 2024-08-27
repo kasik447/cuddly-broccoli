@@ -141,8 +141,10 @@ class Game(tk.Frame):
         self.canvas.bind('<Right>', lambda _: self.paddle.move(30))
 
     def init_game(self):
+        self.update_lives_text()
         self.display_ball()
-        self.start_game()
+        self.text = self.draw_text(self.width / 2, self.height / 2, 'Press "S" for start')
+        self.canvas.bind('<s>', lambda _: self.start_game())
 
     def display_ball(self):
         if self.ball is not None:
@@ -156,15 +158,20 @@ class Game(tk.Frame):
         brick = Brick(self.canvas, x, y, hits)
         self.items[brick.item] = brick
 
+    def draw_text(self, x, y, text, size='50'):
+        font = ('Arial', size)
+        return self.canvas.create_text(x, y, text=text, font=font)
+
     def update_lives_text(self):
         text = 'Lives: %s' % self.lives
         if self.hud is None:
-            print('Hi')
+            self.hud = self.draw_text(50, 20, text, '15')
         else:
             self.canvas.itemconfig(self.hud, text=text)
 
     def start_game(self):
-        self.canvas.unbind('<space>')
+        self.canvas.unbind('<s>')
+        self.canvas.delete(self.text)
         self.paddle.ball = None
         self.game_loop()
 
@@ -174,7 +181,14 @@ class Game(tk.Frame):
 
         if num_bricks == 0:
             self.ball.speed = None
-        elif self.ball.
+            self.draw_text(self.width / 2, self.height / 2, 'You Win!')
+        elif self.ball.position()[3] >= self.height:
+            self.ball.speed = None
+            self.lives -= 1
+            if self.lives == 0:
+                self.draw_text(self.width / 2, self.height / 2, 'You Los! Game Over!')
+            else:
+                self.after(1000, self.init_game())
         else:
             self.ball.update()
             self.after(50, self.game_loop)
